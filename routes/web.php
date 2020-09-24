@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\TwilioController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,8 +14,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/twilio/send-sms', 'TwilioController@sendSms');
-Route::get('/twilio/make-call', 'TwilioController@makeCall');
+Route::get('/twilio/send-sms', [TwilioController::class, 'sendSms']);
+Route::get('/twilio/make-call', [TwilioController::class, 'makeCall']);
