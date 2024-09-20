@@ -1,4 +1,4 @@
-# Laravel 8 Twilio 具象狀態傳輸應用程式介面用戶端
+# Laravel 10 Twilio 具象狀態傳輸應用程式介面用戶端
 
 使用 Twilio 在應用程式中嵌入語音、VoIP 和訊息傳遞功能。Twilio 平台中包含 Twilio 標記語言 (TwiML)、符合 REST 樣式的 API，以及適用於網路瀏覽器、Android 與 iOS 的 VoIP SDK。
 
@@ -23,8 +23,8 @@ $ php artisan key:generate
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/7FtaeIY.png)
+![](https://i.imgur.com/RTZ5Ar9.jpg)
 > 將簡訊經由網際網路傳送置你的親朋好友的行動電話或呼叫器
 
-![](https://i.imgur.com/rzNzBsq.png)
+![](https://i.imgur.com/vrv9lqX.jpg)
 > 利用電腦語音打電話出去系統，由市內電話或行動電話主動大量撥出電話，適用於需要大量電話外撥廣大客戶群之企業，滿足定時自動外撥的需求
