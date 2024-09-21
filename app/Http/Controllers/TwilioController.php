@@ -2,60 +2,48 @@
 
 namespace App\Http\Controllers;
 
-use Twilio\Rest\Client;
+use App\Http\Integrations\Twilio\TwilioConnector;
 
 class TwilioController extends Controller
 {
 
-    protected $client;
+    private $twilioConnector;
 
     /**
-     * Create a new controller instance.
+     * Instantiate a new TwilioController instance.
      *
-     * @return void
+     * @param TwilioConnector $twilioConnector
+     *
+     * @return Response
      */
-    public function __construct()
+    public function __construct(TwilioConnector $twilioConnector)
     {
-        $this->client = new Client(config('services.twilio')['account_sid'], config('services.twilio')['auth_token']);;
+        $this->twilioConnector = $twilioConnector;
     }
 
     public function sendSms()
     {
         try
         {
-            // Use the client to do fun stuff like send text messages!
-            $this->client->messages->create(
-                // the number you'd like to send the message to, also reference: https://www.twilio.com/console/voice/calls/geo-permissions/low-risk
-                '886925909047',
-                [
-                 // A Twilio phone number you purchased at twilio.com/console
-                 'from' => '18333982307',
-                 // the body of the text message you'd like to send
-                 'body' => __('Enormous Lebanon bologna sandwich unveiled at Pennsylvania community fair')
-                ]
-            );
+            $this->twilioConnector->message(__('Dolphins \'deliberately get high\' on puffer fish nerve toxins by carefully chewing and passing them around'));
         }
         catch (Exception $e)
         {
-            echo "Error: " . $e->getMessage();
+            echo __('Error: ') . $e->getMessage();
         }
+        echo __('The message was sent successfully.');
     }
 
     public function makeCall()
     {
         try
         {
-            $this->client->calls->create(
-                '886925909047', // Call this number, also reference: https://www.twilio.com/console/voice/calls/geo-permissions/low-risk
-                '18333982307', // From a valid Twilio number
-                [
-                    'url' => 'https://twimlets.com/holdmusic?Bucket=com.twilio.music.ambient'
-                ]
-            );
+            $this->twilioConnector->call();
         }
         catch (Exception $e)
         {
-            echo "Error: " . $e->getMessage();
+            echo __('Error: ') . $e->getMessage();
         }
+        echo __('The call was made successfully.');
     }
 }
