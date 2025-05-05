@@ -16,7 +16,7 @@ final readonly class TwilioConnector
      */
     public function __construct()
     {
-        $this->client = new Client(config('services.twilio')['account_sid'], config('services.twilio')['auth_token']);;
+        $this->client = new Client(config('services.twilio')['account_sid'], config('services.twilio')['auth_token']);
     }
 
     public function message(string $text)
